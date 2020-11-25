@@ -1,8 +1,10 @@
 #include <sys/msg.h>
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h> //for free()
+
+#ifndef MSGMAX
 #define MSGMAX 2048
+#endif
 
 struct mbuf
 {
