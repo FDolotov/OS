@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include <sys/msg.h> // для msgget
-#include <string.h> // для strlen
+#include <sys/msg.h>
+#include <string.h>
 
-// #include <sys/ipc.h>
 
 #ifndef MSGMAX
 #define MSGMAX 1024
@@ -34,8 +33,7 @@ int main()
 
 
     fgets (buf1.text, sizeof(buf1.text), f);
-    //printf("%s",buf1.text);
-    //printf("\n");
+    
     pclose (f);
 
     if (fd == -1 || msgsnd(fd, &buf1, strlen(buf1.text)+1, IPC_NOWAIT) == -1)
@@ -63,8 +61,7 @@ int main()
 
 
     fgets (buf2.text, sizeof(buf2.text), f);
-    //printf("%s",buf2.text);
-    //printf("\n");
+    
     pclose (f);
 
 
