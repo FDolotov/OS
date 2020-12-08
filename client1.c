@@ -23,9 +23,7 @@ int main()
 
     if ((f = popen(cmd, "r")) == NULL)
     {
-        printf("Unable to open file\n");
-        getchar();
-        return 0;
+        perror("\033[1;31m[ERROR] Unable to open file\033[0m");
     }
 
     struct msgbuf buf1;
@@ -47,7 +45,7 @@ int main()
 
 
     //message 2
-    char cmd2[]= "grep -rw -m 1 \"define\" | tr \":\" \" \" | awk '{print $1}'| tr \"\n\" \" \"";
+    char cmd2[]= "grep -rwl -m 1 \"define\" | tr \":\" \" \" | awk '{print $1}'| tr \"\n\" \" \"";
 
     if ((f = popen(cmd2, "r")) == NULL)
     {
