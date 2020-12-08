@@ -23,19 +23,10 @@ int main()
     struct msqid_ds ps;
     struct msqid_ds bytes;
 
-    //msgrcv(fd, &buf, MSGMAX, 1, 0);
-    //msgrcv(fd, &buf, MSGMAX, 2, 0);
-
     if (msgrcv(fd, &buf, MSGMAX, 1, IPC_NOWAIT) == -1)
         perror("\033[1;31m[ERROR] First message is not recieved\033[0m");
     else
         printf("First message:\n%s", buf.text);
-
-//msgrcv(fd, &buf, MSGMAX, 4, 0);
-
-   /* if (msgctl(fd, IPC_RMID, NULL) == -1)
-        perror("[INFO] Meaasge querry is not deleted");*/
-
 
     //message 2
     char one[MSGMAX]; 
@@ -59,13 +50,6 @@ int main()
         fgets(one, MSGMAX, f);
         printf("%s\n",one); 
     }
-
-    /*printf("ID of the last process:\n");
-    char cmd3[] = "ps | tail -1 | awk '{print $1}'";
-    char two[MSGMAX];
-    FILE *k = popen(cmd3, "r");
-    fgets(two, MSGMAX, k);
-    printf("%s", two);*/
 
     if(msgctl(fd, IPC_STAT, &ps)==0)
     {
